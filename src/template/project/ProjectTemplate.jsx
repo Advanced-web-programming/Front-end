@@ -19,7 +19,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.header`
-  margin: 0 820px 30px 220px;
+  margin: 0 820px 30px 200px;
   height: 104px;
   flex-direction: column;
   align-items: center;
@@ -35,19 +35,24 @@ const ProjectContentBox = styled.div`
   width: 510px;
   height: 532px;
   margin: 0 0 35px 0;
+  border: 1.5px solid #e4e4e4;
+  &:hover {
+    border: 1.5px solid #838383;
+    transition: 0.7s;
+    cursor: pointer;
+  }
 `;
 
 const PorjectContentText = styled.div`
-  width: 488px;
-  height: 149px;
+  width: 490px;
+  height: 151px;
   padding: 30px 0 0 20px;
   background-color: #ffffff;
-  border: 1px solid #a8a8a8;
 `;
 
 const ProjectContentImg = styled.img`
   width: 510px;
-  height: 352px;
+  height: 351px;
 `;
 
 const ProjectContentTextTitle = styled.p`
