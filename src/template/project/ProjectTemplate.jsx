@@ -36,6 +36,7 @@ const ProjectContentBox = styled.div`
   height: 532px;
   margin: 0 0 35px 0;
   border: 1.5px solid #e4e4e4;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   &:hover {
     border: 1.5px solid #838383;
     transition: 0.7s;

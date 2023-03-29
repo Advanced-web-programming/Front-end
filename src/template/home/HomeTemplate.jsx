@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import Background from '../../assets/background/Main.png'
 import TitleImg from '../../assets/TitleImg.png'
 
+
+import { Title } from '../../modules/home/Title';
+import { ButtonModule } from '../../modules/home/ButtonModule';
+
+
 const Container = styled.div`
   background-image: url(${props=>props.bgImg});
   background-size: cover;
@@ -15,19 +20,16 @@ const TitlePosition = styled.div`
   width: 60rem;
   height: 124px;
   margin: 125px 0 0 217px;
-  border: 1px solid white;
 `
 
 const SubButtonPosition = styled.div`
   margin: 32px 0 0 217px;
   width: 12.5rem;
   height: 60px;
-  border: 1px solid white;
 `
 const TitleImgPosition = styled.img`
   height: 400px;
   margin: 30px 217px 0 217px;
-  border: 1px solid white;
 `
 
 export function HomeTemplate() {
@@ -36,10 +38,10 @@ export function HomeTemplate() {
   return(
     <Container bgImg={Background}>
       <TitlePosition>
-        
+        <Title />
       </TitlePosition>
       <SubButtonPosition>
-
+        <ButtonModule />
       </SubButtonPosition>
       <TitleImgPosition src={TitleImg}/>
     </Container>
