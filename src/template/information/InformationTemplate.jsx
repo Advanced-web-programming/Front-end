@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import InformationImg from '../../assets/InformationImg.png'
 
+import { Title } from '../../modules/information/Title';
+import { Contents } from '../../modules/information/Contents';
+
 const Container = styled.div`
   width: 100vw;
   background-color: #FFFFFF;
@@ -17,9 +20,10 @@ const TitlePosition = styled.header`
 `
 
 const InformationScroll = styled.main`
-  margin: 0 0 100px 230px;
+  margin: 20px 0 100px 230px;
   height: 270px;
   overflow-x: scroll;
+  padding: 0 10px;
 `
 const InformationImgPosition = styled.img`
   margin: 0 230px;
@@ -33,10 +37,10 @@ export function Information() {
     <Container>
       <Content>
         <TitlePosition>
-
+          <Title />
         </TitlePosition>
         <InformationScroll>
-
+          <Contents />
         </InformationScroll>
         <InformationImgPosition src={InformationImg} />
       </Content>

@@ -8,7 +8,6 @@ const NavPosition = styled.div`
   height: 112px;
   width: 90%;
   margin: 23px 5%;
-  border: 1px solid white;
 `
 
 const Footer = styled.footer`
