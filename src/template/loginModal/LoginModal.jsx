@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Modal from 'react-modal'
+import { useRef, useEffect } from 'react'
 
 const LoginPage = styled.div`
 	display: flex;
@@ -22,6 +23,14 @@ const Contents = styled.div`
 	padding: 64px 48px;
 	width: inherit;
 `
+
+// const ExitBtn = styled.button`
+// 	border: none;
+// 	background: none;
+// 	width: max-content;
+// 	align-self: end;
+// 	font-size: 16px;
+// `
 
 const LoginText = styled.h2`
 	margin-block-start: 0.5em;
@@ -94,10 +103,25 @@ const Register = styled.button`
 `
 
 export function LoginModal(props) {
+	const { onClose } = props
+	let searchRef = useRef(null)
+
+	useEffect(() => {
+		function handleOutside(e) {
+			if (searchRef.current && !searchRef.current.contains(e.target)) {
+				onClose(false)
+			}
+		}
+		document.addEventListener('mousedown', handleOutside)
+		return () => {
+			document.removeEventListener('mousedown', handleOutside)
+		}
+	}, [searchRef])
 	return (
 		<>
-			<LoginPage>
+			<LoginPage ref={searchRef}>
 				<Contents>
+					{/* <ExitBtn>X</ExitBtn> */}
 					<LoginText>로그인</LoginText>
 					<MessageText>다시 뵙게 되어 반갑습니다!</MessageText>
 					<br />
@@ -110,10 +134,11 @@ export function LoginModal(props) {
 					<br />
 					<br />
 					<LoginBtn>로그인 하기</LoginBtn>
-					<LoginGoogle>로그인 2</LoginGoogle>
+					<LoginGoogle>다른 방식으로 로그인</LoginGoogle>
 					<Register>계정이 없으신가요? 회원 가입하기</Register>
 				</Contents>
 			</LoginPage>
 		</>
 	)
 }
+

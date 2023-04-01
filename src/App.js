@@ -9,8 +9,8 @@ import { Footer } from './template/footer/Footer'
 const NavPosition = styled.div`
 	position: absolute;
 	height: 112px;
-	width: 60%;
-	margin: 23px 20% 0 20%;
+	width: 80%;
+	margin: 23px 10% 0 10%;
 	align-items: center;
 	justify-content: space-between;
 	display: flex;
@@ -18,9 +18,9 @@ const NavPosition = styled.div`
 
 const FooterPosition = styled.footer`
 	display: flex;
-	width: 60%;
+	width: 80%;
 	height: 112px;
-	margin: 23px 20% 0 20%;
+	margin: 23px 10% 0 10%;
 	align-items: center;
 	justify-content: space-between;
 `
@@ -31,7 +31,7 @@ function App() {
 			<NavPosition>
 				<Nav />
 			</NavPosition>
-			<LoginModal />
+			{/* <LoginModal /> */}
 			<Main />
 
 			<FooterPosition>
@@ -42,3 +42,4 @@ function App() {
 }
 
 export default App
+

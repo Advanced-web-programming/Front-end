@@ -1,25 +1,34 @@
 import styled from 'styled-components'
 import Logo from '../../assets/Logo.png'
+import Discord from '../../assets/footer/Discord.png'
+import Facebook from '../../assets/footer/Facebook.png'
+import Twitter from '../../assets/footer/Twitter.png'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { LoginModal } from '../loginModal/LoginModal'
+
+const FooterPostion = styled.div`
+	display: flex;
+	flex-direction: column;
+`
 
 const LogoPosition = styled.img`
 	width: 154px;
 	height: 73px;
 `
 
-const NavMenuPosition = styled.div`
+const FooterMenuPosition = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: space-evenly;
 	padding: 0px;
 	gap: 16px;
-	width: max-content;
+	width: 100%;
 `
 
-const NavItemLink = styled(Link)`
+const FooterItemLink = styled(Link)`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -32,18 +41,21 @@ const NavItemLink = styled(Link)`
 	height: 1rem;
 `
 
-const Login = styled.button`
+const ImgDiv = styled.div`
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0px;
-	gap: 16px;
-	border: none;
-	background: #f55e41;
+	align-items: end;
+`
+
+const ImgLink = styled.img`
 	color: #ffffff;
-	width: 80px;
-	height: 40px;
-	font-size: 14px;
+	width: 24px;
+	height: 24px;
+	padding: 16px;
+`
+
+const CopyRight = styled.span`
+	color: #ffffff;
+	text-align: center;
 `
 
 export function Footer() {
@@ -52,25 +64,32 @@ export function Footer() {
 	})
 	return (
 		<>
-			<NavMenuPosition>
-				<LogoPosition src={Logo} />
-				<BrowserRouter>
-					<NavItemLink to="/docs">Docs</NavItemLink>
-					<NavItemLink to="/privacy">Privacy</NavItemLink>
-					<NavItemLink to="/cookies">Cookies</NavItemLink>
-					<NavItemLink to="/blog">Blog</NavItemLink>
-					<NavItemLink to="/helpcenter">HelpCenter</NavItemLink>
-					<NavItemLink to="/managers">Managers</NavItemLink>
+			<FooterPostion>
+				<FooterMenuPosition>
+					<LogoPosition src={Logo} />
+					<BrowserRouter>
+						<FooterItemLink to="/privacy">Privacy</FooterItemLink>
+						<FooterItemLink to="/docs">Docs</FooterItemLink>
+						<FooterItemLink to="/cookies">Cookies</FooterItemLink>
+						<FooterItemLink to="/blog">Blog</FooterItemLink>
+						<FooterItemLink to="/helpcenter">HelpCenter</FooterItemLink>
+						<FooterItemLink to="/managers">Managers</FooterItemLink>
 
-					{/* <Switch>
+						{/* <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/photo" component={Photo} />
               <Route path="/rooms" component={Rooms} />
             </Switch> */}
-				</BrowserRouter>
-			</NavMenuPosition>
-			<Login>로그인</Login>
-			{/* <LoginModal /> */}
+					</BrowserRouter>
+					<ImgDiv>
+						<ImgLink src={Discord} />
+						<ImgLink src={Facebook} />
+						<ImgLink src={Twitter} />
+					</ImgDiv>
+				</FooterMenuPosition>
+				<CopyRight>© 2023 Broken Web, Inc.</CopyRight>
+			</FooterPostion>
 		</>
 	)
 }
+
