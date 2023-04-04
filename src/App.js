@@ -12,7 +12,7 @@ const NavPosition = styled.div`
 	width: 80%;
 	margin: 23px 10% 0 10%;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	display: flex;
 `
 
@@ -22,7 +22,7 @@ const FooterPosition = styled.footer`
 	height: 112px;
 	margin: 23px 10% 0 10%;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 `
 
 function App() {
