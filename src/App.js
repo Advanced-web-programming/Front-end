@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import styled from 'styled-components'
 
@@ -39,6 +40,42 @@ function App() {
 			</FooterPosition>
 		</>
 	)
+=======
+import React from "react";
+import styled from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Drone from "./pages/drone/Drone";
+
+import { Main } from "./pages/main/Main";
+
+const NavPosition = styled.div`
+  position: absolute;
+  height: 112px;
+  width: 90%;
+  margin: 23px 5%;
+`;
+
+const Footer = styled.footer`
+  width: 90%;
+  height: 112px;
+  margin: 23px 5%;
+`;
+
+function App() {
+  return (
+    <>
+      <NavPosition></NavPosition>
+
+      <BrowserRouter basename="/">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/drone" element={<Drone />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer></Footer>
+    </>
+  );
+>>>>>>> b786de3 (한슬 첫번째)
 }
 
 export default App
