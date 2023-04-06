@@ -3,7 +3,7 @@ import React from "react";
 
 const Container = styled.div`
   width: 20%;
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

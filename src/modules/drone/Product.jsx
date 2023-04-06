@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-import { Card } from "./Card";
+import { Card } from "./CardContainer";
 
 const Container = styled.div`
   width: 50%;
-  height: 130%;
+  height: 100%;
   flex-direction: row;
   display: flex;
   justify-content: center;

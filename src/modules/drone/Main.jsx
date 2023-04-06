@@ -7,10 +7,11 @@ import { Product } from "../../modules/drone/Product";
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 50vh;
+  height: 93%;
   flex-direction: row;
-  padding-top: 100px;
+  padding-top: 20px;
   justify-content: center;
+  overflow: hidden;
 `;
 
 export function Main() {
