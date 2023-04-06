@@ -2,15 +2,16 @@ import styled from "styled-components";
 import React from "react";
 
 const Container = styled.div`
-  width: 20%;
-  height: 100%;
+  width: 300px;
+  height: 477px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 1rem;
   background-color: white;
   border-radius: 20px;
+  padding: 40px;
+  margin: 0 23px 0 0;
 `;
 
 const Text = styled.p`
@@ -39,13 +40,6 @@ export function Menu({ setSelectedMenu, selectedMenu }) {
         <br />
         필요하신가요?
       </Text>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
         <MenuItem
           isSelected={selectedMenu === "menu1"}
           onClick={() => setSelectedMenu("menu1")}
@@ -76,7 +70,6 @@ export function Menu({ setSelectedMenu, selectedMenu }) {
         >
           취미 ∙ 교육
         </MenuItem>
-      </div>
     </Container>
   );
 }

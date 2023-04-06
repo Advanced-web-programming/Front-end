@@ -74,12 +74,6 @@ export function Footer() {
 						<FooterItemLink to="/blog">Blog</FooterItemLink>
 						<FooterItemLink to="/helpcenter">HelpCenter</FooterItemLink>
 						<FooterItemLink to="/managers">Managers</FooterItemLink>
-
-						{/* <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/photo" component={Photo} />
-              <Route path="/rooms" component={Rooms} />
-            </Switch> */}
 					</BrowserRouter>
 					<ImgDiv>
 						<ImgLink src={Discord} />

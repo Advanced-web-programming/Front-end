@@ -7,9 +7,8 @@ import { Product } from "../../modules/drone/Product";
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 50vh;
+  width: 1200px;
   flex-direction: row;
-  padding-top: 100px;
   justify-content: center;
 `;
 

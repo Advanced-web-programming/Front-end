@@ -17,6 +17,10 @@ const Button = styled.button`
   padding: 16px 24px;
   font-size: 14px;
   cursor: pointer;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 0px 5px 0px;
+  &:hover{
+    // box-shadow: rgba(255, 255, 255, 0.15) 0px 100px 100px 0px;
+  }
 `;
 
 export function ButtonModule() {
