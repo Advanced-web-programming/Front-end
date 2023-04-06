@@ -43,6 +43,7 @@ const TitleImgPosition = styled.img`
   margin: 30px 217px 0 217px;
   opacity: 1;
   animation: ${rotate_image} 1s ease-in-out;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 10px 100px 0px;
 `;
 
 export function HomeTemplate() {

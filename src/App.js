@@ -1,10 +1,9 @@
 
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import styled from 'styled-components'
 
 import { Main } from './pages/main/Main'
-import { LoginModal } from './template/loginModal/LoginModal'
 import { Nav } from './template/nav/Nav'
 import { Footer } from './template/footer/Footer'
 import { DroneTemplate } from './template/drone/DroneTemplate';
@@ -12,38 +11,35 @@ import { DroneTemplate } from './template/drone/DroneTemplate';
 const NavPosition = styled.div`
 	position: absolute;
 	height: 112px;
-	width: 80%;
-	margin: 23px 10% 0 10%;
-	align-items: center;
-	justify-content: space-evenly;
-	display: flex;
+	width: 100vw;
+	Z-index: 1
 `
 
 const FooterPosition = styled.footer`
 	display: flex;
-	width: 80%;
+	width: 100vw;
 	height: 112px;
-	margin: 23px 10% 0 10%;
+	margin: 23px 0;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: center;
 `
 
 function App() {
 	return (
-		<>
-			<NavPosition>
-				<Nav />
-			</NavPosition>
-			<BrowserRouter basename="/">
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/drone" element={<DroneTemplate />} />
-        </Routes>
-      </BrowserRouter>
+		<div>
+			<BrowserRouter>
+				<NavPosition>
+					<Nav />
+				</NavPosition>
+					<Routes>
+						<Route path="/" exact={true} element={<Main />} />
+						<Route path="/drone" element={<DroneTemplate />} />
+					</Routes>
+			</BrowserRouter>
 			<FooterPosition>
 				<Footer />
 			</FooterPosition>
-		</>
+		</div>
 	)
 }
 export default App

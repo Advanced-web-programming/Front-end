@@ -11,31 +11,26 @@ const LogoPosition = styled.img`
 `
 
 const NavMenuPosition = styled.div`
+	width: 1200px;
+	height: 100%;
+	margin: 23px auto 0;
 	display: flex;
 	flex-direction: row;
+	justify-contents: flex-start; //center 
 	align-items: center;
 	padding: 0px;
 	gap: 16px;
-	width: max-content;
 `
 
 const NavItemLink = styled(Link)`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+	width: 90px;
 	color: #9f9fac;
 	text-decoration: none;
 	padding: 8px 16px;
 	gap: 8px;
-	width: 4rem;
-	height: 1rem;
 `
 
 const Login = styled.button`
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	padding: 0px;
 	gap: 16px;
 	border: none;
@@ -44,6 +39,7 @@ const Login = styled.button`
 	width: 80px;
 	height: 40px;
 	font-size: 14px;
+	margin-left: auto;
 `
 
 export function Nav() {
@@ -56,23 +52,14 @@ export function Nav() {
 	return (
 		<>
 			<NavMenuPosition>
-				<LogoPosition src={Logo} />
-				<BrowserRouter>
-					<NavItemLink to="/" style={{ color: '#ffffff' }}>
-						Home
-					</NavItemLink>
+					<LogoPosition src={Logo} />
+					<NavItemLink to="/" style={{ color: '#ffffff' }}>Home</NavItemLink>
 					<NavItemLink to="/info">회사소개</NavItemLink>
 					<NavItemLink to="/summary">사업개요</NavItemLink>
 					<NavItemLink to="/recruitment">인재채용</NavItemLink>
 					<NavItemLink to="/help">고객지원</NavItemLink>
-					{/* <Switch>
-						<Route exact path="/" component={Main} />
-						<Route path="/" component={Main} />
-						<Route path="/" component={Main} />
-					</Switch> */}
-				</BrowserRouter>
+					<Login onClick={toggleLogin}>로그인</Login>
 			</NavMenuPosition>
-			<Login onClick={toggleLogin}>로그인</Login>
 			{showLogin ? <LoginModal onClose={setShowLogin} /> : null}
 		</>
 	)
