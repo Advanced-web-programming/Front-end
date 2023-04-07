@@ -6,15 +6,15 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
   background-color: white;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 const Content = styled.button`
-  width: 43%;
-  height: 45%;
+  width: 15rem;
+  height: 16rem;
   margin: 1rem 1rem;
   background-color: #f8f8f9;
   border-radius: 20px;
@@ -35,7 +35,7 @@ const Text = styled.div`
   margin: 10px;
 `;
 
-export function Card({ selectedMenu }) {
+export function CardContainer({ selectedMenu }) {
   let menu;
   switch (selectedMenu) {
     case "menu1":

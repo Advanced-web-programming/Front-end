@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-import { Card } from "./CardContainer";
+import { CardContainer } from "./CardContainer";
 
 const Container = styled.div`
-  width: 50%;
+  width: 40rem;
   height: 100%;
   flex-direction: row;
   display: flex;
@@ -11,6 +11,7 @@ const Container = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 20px;
+  overflow: hidden;
 `;
 
 const Text = styled.p`
@@ -23,7 +24,7 @@ export function Product({ selectedMenu }) {
   return (
     <Container>
       {selectedMenu ? (
-        <Card selectedMenu={selectedMenu} />
+        <CardContainer selectedMenu={selectedMenu} />
       ) : (
         <Text>서비스를 선택해주세요</Text>
       )}

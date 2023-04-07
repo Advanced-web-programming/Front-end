@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 
 const Container = styled.div`
-  width: 20%;
+  width: 15rem;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@ const MenuItem = styled.button`
   border: none;
   margin: 8px;
   font-weight: 530;
+  white-space: nowrap;
 `;
 
 export function Menu({ setSelectedMenu, selectedMenu }) {

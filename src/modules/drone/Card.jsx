@@ -1,4 +1,4 @@
-import image1 from "../../assets/drones/아리온.png";
+import image1 from "../../assets/drones/아리온스콜피온.png";
 import image2 from "../../assets/drones/스위드.png";
 import image3 from "../../assets/drones/앤트윙.png";
 import image4 from "../../assets/drones/FFW-007.png";
@@ -20,73 +20,73 @@ const Card1 = {
 
 const Card2 = {
   image: image2,
-  name: "아리온 스콜피온",
+  name: "스위드",
   case: "멀티콥터",
 };
 
 const Card3 = {
   image: image3,
-  name: "아리온 스콜피온",
+  name: "앤트윙",
   case: "멀티콥터",
 };
 
 const Card4 = {
   image: image4,
-  name: "아리온 스콜피온",
-  case: "멀티콥터",
+  name: "FFW-007",
+  case: "VTOL(수직이착륙)",
 };
 
 const Card5 = {
   image: image5,
-  name: "아리온 스콜피온",
-  case: "멀티콥터",
+  name: "FFW-040",
+  case: "VTOL(수직이착륙)",
 };
 
 const Card6 = {
   image: image6,
-  name: "아리온 스콜피온",
+  name: "Mega6",
   case: "멀티콥터",
 };
 
 const Card7 = {
   image: image7,
-  name: "아리온 스콜피온",
+  name: "ADT-2012",
   case: "멀티콥터",
 };
 
 const Card8 = {
   image: image8,
-  name: "아리온 스콜피온",
+  name: "iONE-SMART",
   case: "멀티콥터",
 };
 
 const Card9 = {
   image: image9,
-  name: "아리온 스콜피온",
+  name: "황소",
   case: "멀티콥터",
 };
 
 const Card10 = {
   image: image10,
-  name: "아리온 스콜피온",
+  name: "천풍",
   case: "멀티콥터",
 };
 
 const Card11 = {
   image: image11,
-  name: "아리온 스콜피온",
+  name: "메신저드론",
   case: "멀티콥터",
 };
 
 const Card12 = {
   image: image12,
-  name: "아리온 스콜피온",
+  name: "DN300",
   case: "멀티콥터",
 };
 
 const Card13 = {
   image: image13,
-  name: "아리온 스콜피온",
+  name: "Arjin-L1",
   case: "멀티콥터",
 };
 
