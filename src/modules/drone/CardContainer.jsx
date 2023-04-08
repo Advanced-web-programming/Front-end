@@ -9,7 +9,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: white;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 const Content = styled.button`
