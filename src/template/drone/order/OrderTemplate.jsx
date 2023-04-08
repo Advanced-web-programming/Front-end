@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import Background from "../../assets/background/Main.png";
-import Project from "../../assets/background/Project.png";
+import Background from "../../../assets/background/Main.png";
+import Project from "../../../assets/background/Project.png";
 
-import { Main } from "../../modules/drone/Main";
+import { Order } from "../../../modules/drone/Order";
 
 const BackContainer = styled.div`
-  padding: 135px 0 0 0 ;
+  padding: 135px 0 0 0;
   width: 100%;
 `;
 
@@ -20,11 +20,11 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export function DroneTemplate() {
+export function OrderTemplate() {
   return (
     <BackContainer bgImg={Background}>
       <Container bgImg={Project}>
-        <Main />
+        <Order />
       </Container>
     </BackContainer>
   );

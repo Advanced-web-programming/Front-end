@@ -15,7 +15,7 @@ const Container = styled.section`
  }
 `
 const CardImg = styled.img`
-  padding: 32px;
+  margin: 32px;
   width: 32px;
   height: 32px;
 `

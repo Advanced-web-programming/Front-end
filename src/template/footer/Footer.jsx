@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Logo from "../../assets/Logo.png";
-import Discord from "../../assets/footer/discord.png";
-import Facebook from "../../assets/footer/facebook.png";
-import Twitter from "../../assets/footer/twitter.png";
+import Discord from "../../assets/footer/Discord.png";
+import Facebook from "../../assets/footer/Facebook.png";
+import Twitter from "../../assets/footer/Twitter.png";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -74,12 +74,6 @@ export function Footer() {
             <FooterItemLink to="/blog">Blog</FooterItemLink>
             <FooterItemLink to="/helpcenter">HelpCenter</FooterItemLink>
             <FooterItemLink to="/managers">Managers</FooterItemLink>
-
-            {/* <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/photo" component={Photo} />
-              <Route path="/rooms" component={Rooms} />
-            </Switch> */}
           </BrowserRouter>
           <ImgDiv>
             <ImgLink src={Discord} />

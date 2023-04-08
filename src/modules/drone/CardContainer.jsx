@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Outlet, Link } from "react-router-dom";
 import { Menu1, Menu2, Menu3, Menu4, Menu5 } from "./Card.jsx";
 
 const Container = styled.div`
@@ -23,8 +24,8 @@ const Content = styled.button`
 
 const CardImg = styled.img`
   padding 20px;
-  width: 80%;
-  height: 40%;
+  width: 100%;
+  height: 60%;
 `;
 
 const Text = styled.div`
@@ -60,11 +61,16 @@ export function CardContainer({ selectedMenu }) {
   return (
     <Container>
       {menu.map((card) => (
-        <Content>
-          <CardImg src={card.image} />
-          <Text color={"black"}>{card.name}</Text>
-          <Text color={"#8B8B8B"}>{card.case}</Text>
-        </Content>
+        <>
+          <Link to={"/drone/order"} state={{ card }}>
+            <Content>
+              <CardImg src={card.image} />
+              <Text color={"black"}>{card.name}</Text>
+              <Text color={"#8B8B8B"}>{card.case}</Text>
+            </Content>
+            <Outlet />
+          </Link>
+        </>
       ))}
     </Container>
   );

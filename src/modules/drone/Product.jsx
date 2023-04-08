@@ -2,19 +2,18 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { CardContainer } from "./CardContainer";
 
-const Container = styled.div`
-  width: 40rem;
-  height: 100%;
+const Container = styled.section`
+  width: 810px;
+  height: 600px;
   flex-direction: row;
+  background-color: white;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 20px;
-  overflow: hidden;
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: black;

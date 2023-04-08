@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 import { Card } from "./Card"
-import { cardInfo } from "../../static/statice"
+import { cardInfo } from "../../static/static"
 
 const Container = styled.section`
   width: 100%;
