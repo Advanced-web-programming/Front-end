@@ -8,6 +8,11 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { LoginModal } from '../loginModal/LoginModal'
 
+const Container = styled.div`
+	width: 984px;
+	margin: 23px auto;
+`
+
 const FooterPostion = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -63,7 +68,7 @@ export function Footer() {
 		console.log(window.location.href)
 	})
 	return (
-		<>
+		<Container>
 			<FooterPostion>
 				<FooterMenuPosition>
 					<LogoPosition src={Logo} />
@@ -83,7 +88,7 @@ export function Footer() {
 				</FooterMenuPosition>
 				<CopyRight>© 2023 Broken Web, Inc.</CopyRight>
 			</FooterPostion>
-		</>
+		</Container>
 	)
 }
 
