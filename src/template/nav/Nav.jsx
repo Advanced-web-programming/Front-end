@@ -1,67 +1,68 @@
-import styled from 'styled-components'
-import Logo from '../../assets/Logo.png'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { LoginModal } from '../loginModal/LoginModal'
+import styled from "styled-components";
+import Logo from "../../assets/Logo.png";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { LoginModal } from "../loginModal/LoginModal";
 
 const LogoPosition = styled.img`
-	width: 154px;
-	height: 73px;
-`
+  width: 154px;
+  height: 73px;
+`;
 
 const NavMenuPosition = styled.div`
-	width: 1200px;
-	height: 100%;
-	margin: 23px auto 0;
-	display: flex;
-	flex-direction: row;
-	justify-contents: flex-start; //center 
-	align-items: center;
-	padding: 0px;
-	gap: 16px;
-`
+  width: 1200px;
+  height: 100%;
+  margin: 23px auto 0;
+  display: flex;
+  flex-direction: row;
+  justify-contents: flex-start; //center
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+`;
 
 const NavItemLink = styled(Link)`
-	width: 90px;
-	color: #9f9fac;
-	text-decoration: none;
-	padding: 8px 16px;
-	gap: 8px;
-`
+  width: 100px;
+  color: #9f9fac;
+  text-decoration: none;
+  padding: 8px 16px;
+  gap: 8px;
+`;
 
 const Login = styled.button`
-	padding: 0px;
-	gap: 16px;
-	border: none;
-	background: #f55e41;
-	color: #ffffff;
-	width: 80px;
-	height: 40px;
-	font-size: 14px;
-	margin-left: auto;
-`
+  padding: 0px;
+  gap: 16px;
+  border: none;
+  background: #f55e41;
+  color: #ffffff;
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  margin-left: auto;
+`;
 
 export function Nav() {
-	const [showLogin, setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false);
 
-	const toggleLogin = () => {
-		setShowLogin(!showLogin)
-	}
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+  };
 
-	return (
-		<>
-			<NavMenuPosition>
-					<LogoPosition src={Logo} />
-					<NavItemLink to="/" style={{ color: '#ffffff' }}>Home</NavItemLink>
-					<NavItemLink to="/info">회사소개</NavItemLink>
-					<NavItemLink to="/summary">사업개요</NavItemLink>
-					<NavItemLink to="/recruitment">인재채용</NavItemLink>
-					<NavItemLink to="/help">고객지원</NavItemLink>
-					<Login onClick={toggleLogin}>로그인</Login>
-			</NavMenuPosition>
-			{showLogin ? <LoginModal onClose={setShowLogin} /> : null}
-		</>
-	)
+  return (
+    <>
+      <NavMenuPosition>
+        <LogoPosition src={Logo} />
+        <NavItemLink to="/" style={{ color: "#ffffff" }}>
+          Home
+        </NavItemLink>
+        <NavItemLink to="/info">회사소개</NavItemLink>
+        <NavItemLink to="/summary">사업개요</NavItemLink>
+        <NavItemLink to="/recruitment">인재채용</NavItemLink>
+        <NavItemLink to="/help">고객지원</NavItemLink>
+        <Login onClick={toggleLogin}>로그인</Login>
+      </NavMenuPosition>
+      {showLogin ? <LoginModal onClose={setShowLogin} /> : null}
+    </>
+  );
 }
-
