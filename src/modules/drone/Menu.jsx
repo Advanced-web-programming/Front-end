@@ -30,6 +30,7 @@ const MenuItem = styled.button`
   border: none;
   margin: 8px;
   font-weight: 530;
+  white-space: nowrap;
 `;
 
 export function Menu({ setSelectedMenu, selectedMenu }) {

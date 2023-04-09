@@ -10,6 +10,7 @@ const MainContainer = styled.div`
   width: 1200px;
   flex-direction: row;
   justify-content: center;
+  overflow: hidden;
 `;
 
 export function Main() {

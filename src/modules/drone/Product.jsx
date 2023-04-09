@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-import { Card } from "./Card";
+import { CardContainer } from "./CardContainer";
 
 const Container = styled.section`
   width: 810px;
@@ -23,7 +23,7 @@ export function Product({ selectedMenu }) {
   return (
     <Container>
       {selectedMenu ? (
-        <Card selectedMenu={selectedMenu} />
+        <CardContainer selectedMenu={selectedMenu} />
       ) : (
         <Text>서비스를 선택해주세요</Text>
       )}
