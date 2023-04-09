@@ -10,15 +10,18 @@ const LogoPosition = styled.img`
   height: 73px;
 `;
 
+const Container = styled.div`
+  width: 1250px;
+  margin: 0 auto;
+`
+
 const NavMenuPosition = styled.div`
-  width: 1200px;
   height: 100%;
-  margin: 23px auto 0;
+  margin: 23px 0 0 0;
   display: flex;
   flex-direction: row;
-  justify-contents: flex-start; //center
+  justify-contents: flex-start;
   align-items: center;
-  padding: 0px;
   gap: 16px;
 `;
 
@@ -50,7 +53,7 @@ export function Nav() {
   };
 
   return (
-    <>
+    <Container>
       <NavMenuPosition>
         <LogoPosition src={Logo} />
         <NavItemLink to="/" style={{ color: "#ffffff" }}>
@@ -63,6 +66,6 @@ export function Nav() {
         <Login onClick={toggleLogin}>로그인</Login>
       </NavMenuPosition>
       {showLogin ? <LoginModal onClose={setShowLogin} /> : null}
-    </>
+    </Container>
   );
 }

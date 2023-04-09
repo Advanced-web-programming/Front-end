@@ -5,7 +5,7 @@ import { Contents } from "../../modules/project/Contents";
 import { Title } from "../../modules/project/Title";
 
 const Container = styled.div`
-  width: 100vw;
+  width: max(100vw, 1440px);
   background-color: #f8f8f9;
 `;
 

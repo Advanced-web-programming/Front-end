@@ -13,15 +13,13 @@ const NavPosition = styled.div`
   height: 112px;
   width: 100vw;
   z-index: 1;
+  padding: 0 105px;
 `;
 
 const FooterPosition = styled.footer`
-  display: flex;
   width: 100vw;
   height: 112px;
-  margin: 23px 0;
-  align-items: center;
-  justify-content: center;
+  padding: 0 268px;
 `;
 
 function App() {
