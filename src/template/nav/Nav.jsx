@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const NavMenuPosition = styled.div`
   height: 100%;
-  margin: 23px 0 0 0;
+  margin: 23px 0 0 105px;
   display: flex;
   flex-direction: row;
   justify-contents: flex-start;
