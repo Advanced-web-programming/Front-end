@@ -13,7 +13,6 @@ const NavPosition = styled.div`
   height: 112px;
   width: 100vw;
   z-index: 1;
-  padding: 0 105px;
 `;
 
 const FooterPosition = styled.footer`
