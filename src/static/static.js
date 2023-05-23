@@ -1,3 +1,17 @@
+import image1 from "../assets/drones/아리온스콜피온.png";
+import image2 from "../assets/drones/스위드.png";
+import image3 from "../assets/drones/앤트윙.png";
+import image4 from "../assets/drones/FFW-007.png";
+import image5 from "../assets/drones/FFW-040.png";
+import image6 from "../assets/drones/Mega6.png";
+import image7 from "../assets/drones/ADT-2012.png";
+import image8 from "../assets/drones/iONE-SMART.png";
+import image9 from "../assets/drones/황소.png";
+import image10 from "../assets/drones/천풍.png";
+import image11 from "../assets/drones/메신저드론.png";
+import image12 from "../assets/drones/DN300.png";
+import image13 from "../assets/drones/Arjin-L1.png";
+
 export const cardInfo = [
   {
     id: 1,
@@ -58,3 +72,283 @@ export const exploreDrone = [
     content: "멀티콥터",
   },
 ];
+
+export const orderBasicInfo = [
+  {
+    id: 1,
+    title: "감시 ∙ 정찰 ∙ 수색",
+    items: [
+      {
+        id: 1,
+        title: "아리온 스콜피온",
+        type: "멀티콥터",
+        image: image1,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 2,
+        title: "스위드",
+        type: "멀티콥터",
+        image: image2,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 3,
+        title: "앤트윙",
+        type: "멀티콥터",
+        image: image3,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+    ]
+  },
+  {
+    id: 2,
+    title: "물류 ∙ 운송 ∙ 구조",
+    items: [
+      {
+        id: 1,
+        title: "FFW-007",
+        type: "VTOL(수직이착륙)",
+        image: image4,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 2,
+        title: "FFW-040",
+        type: "VTOL(수직이착륙)",
+        image: image5,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 3,
+        title: "Mega6",
+        type: "멀티콥터",
+        image: image6,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 4,
+        title: "ADT-2012",
+        type: "멀티콥터",
+        image: image7,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 5,
+        title: "앤트윙",
+        type: "멀티콥터",
+        image: image3,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+    ]
+  },
+  {
+    id: 3,
+    title: "방역 ∙ 방제 ∙ 살포",
+    items: [
+      {
+        id: 1,
+        title: "iONE - SMART",
+        type: "멀티콥터",
+        image: image8,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 2,
+        title: "황소",
+        type: "멀티콥터",
+        image: image9,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 3,
+        title: "앤트윙",
+        type: "멀티콥터",
+        image: image3,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 4,
+        title: "천풍",
+        type: "멀티콥터",
+        image: image10,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+    ]
+  },
+  {
+    id: 4,
+    title: "방송 ∙ 공연",
+    items: [
+      {
+        id: 1,
+        title: "메신저 드론",
+        type: "멀티콥터",
+        image: image11,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 2,
+        title: "ADT-2012",
+        type: "멀티콥터",
+        image: image7,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+    ]
+  },
+  {
+    id: 5,
+    title: "취미 ∙ 교육",
+    items: [
+      {
+        id: 1,
+        title: "DN300",
+        type: "멀티콥터",
+        image: image12,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+      {
+        id: 2,
+        title: "Arjin-L1",
+        type: "멀티콥터",
+        image: image13,
+        decription:{
+          made: '무지개 연구소',
+          weight: '5.5Kg',
+          speed: '54km/h',
+          time: '20분'
+        }
+      },
+    ]
+  },
+]
+
+export const menuItems = [
+  {
+    id: 0,
+    title: "Public Profile"
+  },
+  {
+    id: 1,
+    title: "Order List",
+  },
+  {
+    id: 2,
+    title: "Delivery List",
+  }
+]
+
+export const deliveryComplete = [
+  {
+    id: 0,
+    orderNumber: "12121211",
+    day: "2023-05-22",
+    address: "경기도 성남시 성남대로 1342 가천대학교 제 2학생생활관",
+    user: "오진영"
+  },
+  {
+    id:1,
+    orderNumber: "12121211",
+    day: "2023-05-22",
+    address: "경기도 성남시 성남대로 1342 가천대학교 제 2학생생활관",
+    user: "류관곤"
+  },
+]
+
+export const authMenuItem = [
+  {
+    id: 0,
+    title: "주문 승인"
+  },
+  {
+    id: 1,
+    title: "배송 등록",
+  },
+  {
+    id: 2,
+    title: "드론 관리",
+  }
+]
+
+export const categoryList = [
+  "감시 ∙ 정찰 ∙ 수색",
+  "물류 ∙ 운송 ∙ 구조",
+  "방역 ∙ 방제 ∙ 살포",
+  "방송 ∙ 공연",
+  "취미 ∙ 교육"
+]

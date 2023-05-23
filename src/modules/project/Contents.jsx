@@ -21,7 +21,6 @@ export function Contents() {
           return <Card key={info.id} id={info.id} title={info.title} content={info.content} img={info.img}/>
         })
       }
-
     </Container>
   )
 }

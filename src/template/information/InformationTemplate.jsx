@@ -1,8 +1,13 @@
+import { useEffect, useRef } from "react";
+
 import styled from "styled-components";
 import InformationImg from "../../assets/InformationImg.png";
 
 import { Title } from "../../modules/information/Title";
 import { Contents } from "../../modules/information/Contents";
+
+import { informationRefAtom } from "../../atoms/utilAtom";
+import { useRecoilState } from "recoil";
 
 const Container = styled.div`
   width: max(100vw, 1440px);
@@ -35,8 +40,20 @@ const InformationImgPosition = styled.img`
 `;
 
 export function Information() {
+  const [infotRef, setInfoRef] = useRecoilState(informationRefAtom)
+  const ref = useRef();
+  const handleButtonClick = () => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(()=>{
+    setInfoRef({
+      ref: ref.current,
+      refEvent: handleButtonClick,
+    });
+  }, [setInfoRef])
   return (
-    <Container>
+    <Container ref={ref}>
       <Content>
         <TitlePosition>
           <Title />

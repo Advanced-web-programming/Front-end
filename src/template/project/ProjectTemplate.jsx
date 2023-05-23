@@ -1,8 +1,13 @@
+import { useEffect, useRef } from "react";
+
 import styled from "styled-components";
 import Project from "../../assets/background/Project.png";
 
 import { Contents } from "../../modules/project/Contents";
 import { Title } from "../../modules/project/Title";
+
+import { projectRefAtom } from "../../atoms/utilAtom";
+import { useRecoilState } from "recoil";
 
 const Container = styled.div`
   width: max(100vw, 1440px);
@@ -10,7 +15,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-padding: 84px 0 64px;
+  padding: 84px 0 64px;
   width: 1430px;
   margin: 0 auto;
   background-image: url(${(props) => props.bgImg});
@@ -31,8 +36,20 @@ const Main = styled.main`
 `;
 
 export function ProjectTemplate() {
+  const [pojectRef, setProjectRef] = useRecoilState(projectRefAtom)
+  const ref = useRef();
+  const handleButtonClick = () => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(()=>{
+    setProjectRef({
+      ref: ref.current,
+      refEvent: handleButtonClick,
+    });
+  }, [setProjectRef])
   return (
-    <Container>
+    <Container ref={ref}>
       <Content bgImg={Project}>
         <Head>
           <Title/>

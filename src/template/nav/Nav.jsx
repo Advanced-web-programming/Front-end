@@ -4,6 +4,11 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { LoginModal } from "../loginModal/LoginModal";
+import { userInfoAtom } from "../../atoms/userAtom";
+import { useRecoilValue } from "recoil";
+
+import { informationRefAtom, projectRefAtom, currentUrl, showLogin } from "../../atoms/utilAtom";
+import { useRecoilState } from "recoil";
 
 const LogoPosition = styled.img`
   width: 154px;
@@ -17,7 +22,7 @@ const Container = styled.div`
 
 const NavMenuPosition = styled.div`
   height: 100%;
-  margin: 23px 0 0 105px;
+  margin: 23px 0 0 55px;
   display: flex;
   flex-direction: row;
   justify-contents: flex-start;
@@ -26,11 +31,13 @@ const NavMenuPosition = styled.div`
 `;
 
 const NavItemLink = styled(Link)`
-  width: 100px;
   color: #9f9fac;
   text-decoration: none;
   padding: 8px 16px;
   gap: 8px;
+  &:hover{
+    color: #ffffff;
+  }
 `;
 
 const Login = styled.button`
@@ -45,27 +52,49 @@ const Login = styled.button`
   margin-left: auto;
 `;
 
+const Text = styled.div`
+  margin-left: auto;
+  color: ${props=>props.color};
+  font-size: ${props=>props.size};
+  font-weight: ${props=>props.weight};
+`
+
 export function Nav() {
-  const [showLogin, setShowLogin] = useState(false);
+  const [show, setShow] = useRecoilState(showLogin);
+  const userInfo = useRecoilValue(userInfoAtom);
+  const projectRef = useRecoilValue(projectRefAtom);
+  const infoRef = useRecoilValue(informationRefAtom);
+  const [path, setPath] = useRecoilState(currentUrl);
 
   const toggleLogin = () => {
-    setShowLogin(!showLogin);
+    setShow(true);
   };
+
+  const pathHandler = (p) =>{
+    setPath(p)
+  }
 
   return (
     <Container>
       <NavMenuPosition>
         <LogoPosition src={Logo} />
-        <NavItemLink to="/" style={{ color: "#ffffff" }}>
+        <NavItemLink to="/" onClick={()=>{
+          pathHandler("/")
+        }}>
           Home
         </NavItemLink>
-        <NavItemLink to="/info">회사소개</NavItemLink>
-        <NavItemLink to="/summary">사업개요</NavItemLink>
-        <NavItemLink to="/recruitment">인재채용</NavItemLink>
-        <NavItemLink to="/help">고객지원</NavItemLink>
-        <Login onClick={toggleLogin}>로그인</Login>
+        {(path !== "/user" || window.location.pathname === "/") && <NavItemLink onClick={()=>{
+          pathHandler("/information")
+          infoRef.refEvent()
+        }}>회사소개</NavItemLink>}
+        {(path !== "/user" || window.location.pathname === "/") && <NavItemLink onClick={()=>{
+          pathHandler("/project")
+          projectRef.refEvent()
+        }}>프로젝트 소개</NavItemLink>}
+        <NavItemLink to="/user" onClick={()=>pathHandler("/user")}>고객정보</NavItemLink>
+        {userInfo.userId === "" ? <Login onClick={toggleLogin}>로그인</Login> : <Text color={"#e6edf3"} size={"0.9rem"} weight={"600"}>{userInfo.userName} 고객님</Text>}
       </NavMenuPosition>
-      {showLogin ? <LoginModal onClose={setShowLogin} /> : null}
+      {show ? <LoginModal onClose={setShow} /> : null}
     </Container>
   );
 }
