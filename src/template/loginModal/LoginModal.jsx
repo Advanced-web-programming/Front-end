@@ -1,6 +1,11 @@
 import styled, { keyframes } from 'styled-components'
 import Modal from 'react-modal'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+
+import { useRecoilState } from "recoil";
+import { userInfoAtom } from '../../atoms/userAtom';
+
+import { Navigate, useNavigate} from "react-router-dom";
 
 const rotate_image = keyframes`
   0% {
@@ -69,6 +74,10 @@ const Form = styled.input`
 	width: 100%;
 	height: 59px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+	&:focus{
+    outline: none;
+  }
+
 `
 
 const Forget = styled.span`
@@ -119,6 +128,21 @@ export function LoginModal(props) {
 	const { onClose } = props
 	let searchRef = useRef(null)
 
+	const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
+	const [id, setId] = useState("");
+	const [password, setPassword] = useState("");
+	const navigate = useNavigate();
+
+	const clickHandler = () => {
+		//요청
+		setUserInfo({
+			userId: id,
+			password: password
+		})
+		onClose(false)
+		navigate("/auth")
+}
+
 	useEffect(() => {
 		function handleOutside(e) {
 			if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -137,13 +161,12 @@ export function LoginModal(props) {
 			<LoginPage ref={searchRef}>
 					<LoginText>로그인</LoginText>
 					<MessageText>다시 뵙게 되어 반갑습니다!</MessageText>
-					<Form placeholder="이메일 또는 휴대전화"></Form>
-					<Form placeholder="비밀번호"></Form>
+					<Form type="email" placeholder="이메일 또는 휴대전화" onChange={(e)=>setId(e.currentTarget.value)} value={id}></Form>
+					<Form type='password' placeholder="비밀번호" onChange={(e)=>setPassword(e.currentTarget.value)} value={password}></Form>
 					<Forget>비밀번호를 잊으셨나요?</Forget>
-					<LoginBtn>로그인 하기</LoginBtn>
+					<LoginBtn onClick={clickHandler}>로그인 하기</LoginBtn>
 					<LoginGoogle>다른 방식으로 로그인</LoginGoogle>
 					<Register>계정이 없으신가요? 회원 가입하기</Register>
-				
 			</LoginPage>
 		</Container>
 	)

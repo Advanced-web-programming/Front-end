@@ -5,6 +5,9 @@ import DroneAcademy from "../../assets/project/DroneAcademy.png";
 import DroneFarm from "../../assets/project/DroneFarm.png"
 import DroneShow from "../../assets/project/DroneShow.png"
 
+import { useScroll } from "../../utils/useScroll";
+import { rotate_image } from "../../utils/anmation";
+
 const Container = styled.section`
   width: 100%;
   margin: 0;
@@ -15,6 +18,7 @@ const Container = styled.section`
     transition: 0.7s;
     cursor: pointer;
   }
+  animation: ${rotate_image} 1s ease-in-out;
 `
 
 const Head = styled.div`
@@ -41,6 +45,7 @@ const CardImg = styled.img`
 `
 
 export function Card(props) {
+  const { scrollY } = useScroll();
   const imgRender = (num) =>{
     if(num === 1) return DroneShow
     else if(num === 2) return DroneAcademy
@@ -48,12 +53,17 @@ export function Card(props) {
     else if(num === 4) return DominoDrone
   }
   return(
-    <Container>
-      <Head>
-        <Title>{props.title}</Title>
-        <Content>{props.content}</Content>
-      </Head>
-      <CardImg src={imgRender(props.id)} alt="qwe"/>
-    </Container>
+    <>
+      { scrollY > 1660 ?
+        <Container>
+          <Head>
+            <Title>{props.title}</Title>
+            <Content>{props.content}</Content>
+          </Head>
+          <CardImg src={imgRender(props.id)} alt="qwe"/>
+        </Container> :
+        <></>
+      }
+    </>
   )
 }

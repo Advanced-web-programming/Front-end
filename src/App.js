@@ -5,12 +5,16 @@ import styled from "styled-components";
 import { Main } from "./pages/main/Main";
 import { Nav } from "./template/nav/Nav";
 import { Footer } from "./template/footer/Footer";
-import { DroneTemplate } from "./template/drone/DroneTemplate";
-import { OrderTemplate } from "./template/drone/order/OrderTemplate";
-import { Complete } from "./template/drone/order/Complete";
+import { UserTemplate } from "./template/user/UserTemplate"; 
+import { AuthTemplate } from "./template/auth/AuthTemplate";
+
+import { ProtectedRoute, PrivateRoute } from "./utils/protectedRoute";
+
+import { useRecoilValue } from "recoil";
+import { authSelector } from "./atoms/authAtom";
+
 const NavPosition = styled.div`
   position: absolute;
-  height: 112px;
   width: 100vw;
   z-index: 1;
 `;
@@ -22,22 +26,28 @@ const FooterPosition = styled.footer`
 `;
 
 function App() {
+  const isAuth = useRecoilValue(authSelector);
   return (
     <div>
       <BrowserRouter>
-        <NavPosition>
-          <Nav />
-        </NavPosition>
+        {isAuth ?<></> : <NavPosition><Nav /></NavPosition>}
         <Routes>
-          <Route path="/" exact={true} element={<Main />} />
-          <Route path="/drone" element={<DroneTemplate />} />
-          <Route path="/drone/order" element={<OrderTemplate />} />
-          <Route path="/drone/complete" element={<Complete />} />
+          <Route path="/" exact={true} element={
+              <Main />
+          } />
+          <Route path='/user' element={
+            <ProtectedRoute>
+              <UserTemplate/>
+            </ProtectedRoute>
+          } />
+          <Route path='/auth' element={
+            <PrivateRoute>
+              <AuthTemplate/>
+            </PrivateRoute>
+          } />
         </Routes>
       </BrowserRouter>
-      <FooterPosition>
-        <Footer />
-      </FooterPosition>
+      {isAuth ?<></> : <FooterPosition> <Footer /></FooterPosition>}
     </div>
   );
 }
