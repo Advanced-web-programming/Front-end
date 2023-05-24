@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Font-end/static/css/main.ba4c5a15.css",
-    "main.js": "/Font-end/static/js/main.4cdd4965.js",
+    "main.js": "/Font-end/static/js/main.26e95cb1.js",
     "static/js/787.14ec74cf.chunk.js": "/Font-end/static/js/787.14ec74cf.chunk.js",
     "static/media/InformationImg.png": "/Font-end/static/media/InformationImg.42ef835b1e7e428b9c8c.png",
     "static/media/DroneFarm.png": "/Font-end/static/media/DroneFarm.c29f206c529648a91252.png",
@@ -27,11 +27,11 @@
     "static/media/DN300.png": "/Font-end/static/media/DN300.d752d7cf80dff8515750.png",
     "index.html": "/Font-end/index.html",
     "main.ba4c5a15.css.map": "/Font-end/static/css/main.ba4c5a15.css.map",
-    "main.4cdd4965.js.map": "/Font-end/static/js/main.4cdd4965.js.map",
+    "main.26e95cb1.js.map": "/Font-end/static/js/main.26e95cb1.js.map",
     "787.14ec74cf.chunk.js.map": "/Font-end/static/js/787.14ec74cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4c5a15.css",
-    "static/js/main.4cdd4965.js"
+    "static/js/main.26e95cb1.js"
   ]
 }
