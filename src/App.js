@@ -33,15 +33,15 @@ function App() {
       <BrowserRouter >
         {isAuth ?<></> : <NavPosition><Nav /></NavPosition>}
         <Routes>
-          <Route path="/Font-end" exact={true} element={
+          <Route path="/Front-end" exact={true} element={
               <Main />
           } />
-          <Route path='/Font-end/user' element={
+          <Route path='/Front-end/user' element={
             <ProtectedRoute>
               <UserTemplate/>
             </ProtectedRoute>
           } />
-          <Route path='/Font-end/auth' element={
+          <Route path='/Front-end/auth' element={
             <PrivateRoute>
               <AuthTemplate/>
             </PrivateRoute>
