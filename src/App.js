@@ -30,7 +30,7 @@ function App() {
   return (
     <div>
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
-      <BrowserRouter>
+      <BrowserRouter >
         {isAuth ?<></> : <NavPosition><Nav /></NavPosition>}
         <Routes>
           <Route path="/Font-end" exact={true} element={
