@@ -72,7 +72,7 @@ export function SideBar() {
   const clickLogout = () =>{
     resetMenu();
     resetUSer();
-    navigate("/Font-end/auth")
+    navigate("/")
   }
 
   return(

@@ -9,10 +9,11 @@ export const ProtectedRoute = (props) => {
   const { children } = props;
   const [isOpen, SetIsOpen] = useRecoilState(showLogin);
   const isLogin = useRecoilValue(userInfoAtom);
+  console.log(isLogin)
 
   const SetLogin = () => {
     SetIsOpen(true)
-    return (<Navigate to={'/Front-end'} />)
+    return (<Navigate to={'/'} />)
   }
 
   return isLogin.userId !== "" ? children : <SetLogin />;
@@ -21,8 +22,9 @@ export const ProtectedRoute = (props) => {
 export const PrivateRoute = (props) => {
   const { children } = props;
   const isLogin = useRecoilValue(authSelector);
+  console.log(isLogin)
   if (isLogin){
     return children
   }
-  return (<Navigate to={'/Front-end'} />);
+  return (<Navigate to={'/'} />);
 }
