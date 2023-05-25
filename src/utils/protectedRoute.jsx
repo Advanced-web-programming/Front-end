@@ -12,7 +12,7 @@ export const ProtectedRoute = (props) => {
 
   const SetLogin = () => {
     SetIsOpen(true)
-    return (<Navigate to={'/'} />)
+    return (<Navigate to={'/font-end'} />)
   }
 
   return isLogin.userId !== "" ? children : <SetLogin />;
@@ -24,5 +24,5 @@ export const PrivateRoute = (props) => {
   if (isLogin){
     return children
   }
-  return (<Navigate to={'/'} />);
+  return (<Navigate to={'/font-end'} />);
 }
