@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Front-end/static/css/main.ba4c5a15.css",
-    "main.js": "/Front-end/static/js/main.17d190d0.js",
+    "main.js": "/Front-end/static/js/main.3e9e045a.js",
     "static/js/787.14ec74cf.chunk.js": "/Front-end/static/js/787.14ec74cf.chunk.js",
     "static/media/InformationImg.png": "/Front-end/static/media/InformationImg.42ef835b1e7e428b9c8c.png",
     "static/media/DroneFarm.png": "/Front-end/static/media/DroneFarm.c29f206c529648a91252.png",
@@ -27,11 +27,11 @@
     "static/media/DN300.png": "/Front-end/static/media/DN300.d752d7cf80dff8515750.png",
     "index.html": "/Front-end/index.html",
     "main.ba4c5a15.css.map": "/Front-end/static/css/main.ba4c5a15.css.map",
-    "main.17d190d0.js.map": "/Front-end/static/js/main.17d190d0.js.map",
+    "main.3e9e045a.js.map": "/Front-end/static/js/main.3e9e045a.js.map",
     "787.14ec74cf.chunk.js.map": "/Front-end/static/js/787.14ec74cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4c5a15.css",
-    "static/js/main.17d190d0.js"
+    "static/js/main.3e9e045a.js"
   ]
 }
