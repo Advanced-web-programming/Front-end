@@ -84,7 +84,7 @@ export function Nav() {
           Home
         </NavItemLink>
         {(path !== "/user" || window.location.pathname === "/") && <NavItemLink onClick={()=>{
-          pathHandler("/information")
+          pathHandler("/font-end/information")
           infoRef.refEvent()
         }}>회사소개</NavItemLink>}
         {(path !== "/user" || window.location.pathname === "/") && <NavItemLink onClick={()=>{
