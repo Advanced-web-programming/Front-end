@@ -5,7 +5,7 @@ export const userInfoAtom = atom({
   key: "userInfoAtom", 
   default: {
     userId: "",
-    userName: "임혜균",
+    userName: "",
     password: ""
   } 
 });

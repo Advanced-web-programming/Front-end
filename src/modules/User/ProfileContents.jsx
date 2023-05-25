@@ -62,7 +62,7 @@ export function ProfileContents() {
       <Input placeholder={"E-mail"}/>
       <ButtonFrame>
         <Button color={"rgb(67, 132, 64)"}>Updata Profile</Button>
-        <Link to="/Font-end"><Button color={"rgb(200, 70, 60)"} onClick={reset}>LogOut</Button></Link>
+        <Link to="/"><Button color={"rgb(200, 70, 60)"} onClick={reset}>LogOut</Button></Link>
       </ButtonFrame>
     </Container>
   )

@@ -73,6 +73,7 @@ export function Nav() {
   const pathHandler = (p) =>{
     setPath(p)
   }
+  console.log(window.location.pathname, path)
 
   return (
     <Container>
@@ -83,15 +84,15 @@ export function Nav() {
         }}>
           Home
         </NavItemLink>
-        {(path !== "/Font-end/user" || window.location.pathname === "/Font-end") && <NavItemLink onClick={()=>{
+        {(window.location.pathname !== "/Font-end/user") && <NavItemLink onClick={()=>{
           pathHandler("/Font-end/information")
           infoRef.refEvent()
         }}>회사소개</NavItemLink>}
-        {(path !== "/Font-end/user" || window.location.pathname === "/Font-end") && <NavItemLink onClick={()=>{
+        {(window.location.pathname !== "/Font-end/user") && <NavItemLink onClick={()=>{
           pathHandler("/Font-end/project")
           projectRef.refEvent()
         }}>프로젝트 소개</NavItemLink>}
-        <NavItemLink to="/Font-end/user" onClick={()=>pathHandler("/Font-end/user")}>고객정보</NavItemLink>
+        <NavItemLink to="/user" onClick={()=>pathHandler("/Font-end/user")}>고객정보</NavItemLink>
         {userInfo.userId === "" ? <Login onClick={toggleLogin}>로그인</Login> : <Text color={"#e6edf3"} size={"0.9rem"} weight={"600"}>{userInfo.userName} 고객님</Text>}
       </NavMenuPosition>
       {show ? <LoginModal onClose={setShow} /> : null}

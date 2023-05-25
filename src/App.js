@@ -29,19 +29,19 @@ function App() {
   const isAuth = useRecoilValue(authSelector);
   return (
     <div>
-      {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
-      <BrowserRouter >
+      <BrowserRouter basename={"/Front-end"}>
+      {/* <BrowserRouter > */}
         {isAuth ?<></> : <NavPosition><Nav /></NavPosition>}
         <Routes>
-          <Route path="/Front-end" exact={true} element={
+          <Route path="/" exact={true} element={
               <Main />
           } />
-          <Route path='/Front-end/user' element={
+          <Route path='/user' element={
             <ProtectedRoute>
               <UserTemplate/>
             </ProtectedRoute>
           } />
-          <Route path='/Front-end/auth' element={
+          <Route path='/auth' element={
             <PrivateRoute>
               <AuthTemplate/>
             </PrivateRoute>
