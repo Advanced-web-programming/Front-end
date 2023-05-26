@@ -1,8 +1,13 @@
 {
   "files": {
     "main.css": "/Front-end/static/css/main.ba4c5a15.css",
-    "main.js": "/Front-end/static/js/main.3e9e045a.js",
+    "main.js": "/Front-end/static/js/main.96b25ec5.js",
     "static/js/787.14ec74cf.chunk.js": "/Front-end/static/js/787.14ec74cf.chunk.js",
+    "static/media/Drone5.png": "/Front-end/static/media/Drone5.1abdad3d8a98b4e1996d.png",
+    "static/media/Drone2.png": "/Front-end/static/media/Drone2.6547cffc275fcf16dde8.png",
+    "static/media/Drone3.png": "/Front-end/static/media/Drone3.dbb478c73430fac9b5e9.png",
+    "static/media/Drone1.png": "/Front-end/static/media/Drone1.88aa9130cb33ef400e78.png",
+    "static/media/Drone4.png": "/Front-end/static/media/Drone4.7133a785d7a77281e235.png",
     "static/media/InformationImg.png": "/Front-end/static/media/InformationImg.42ef835b1e7e428b9c8c.png",
     "static/media/DroneFarm.png": "/Front-end/static/media/DroneFarm.c29f206c529648a91252.png",
     "static/media/TitleImg.png": "/Front-end/static/media/TitleImg.a27c4ef954a024f5bed5.png",
@@ -27,11 +32,11 @@
     "static/media/DN300.png": "/Front-end/static/media/DN300.d752d7cf80dff8515750.png",
     "index.html": "/Front-end/index.html",
     "main.ba4c5a15.css.map": "/Front-end/static/css/main.ba4c5a15.css.map",
-    "main.3e9e045a.js.map": "/Front-end/static/js/main.3e9e045a.js.map",
+    "main.96b25ec5.js.map": "/Front-end/static/js/main.96b25ec5.js.map",
     "787.14ec74cf.chunk.js.map": "/Front-end/static/js/787.14ec74cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4c5a15.css",
-    "static/js/main.3e9e045a.js"
+    "static/js/main.96b25ec5.js"
   ]
 }
