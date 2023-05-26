@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { menuItems } from "../../static/static";
 
 import { selectedMenu } from "../../atoms/settingAtom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userInfoAtom } from "../../atoms/userAtom";
 
 const Container = styled.div`
   width: 100%;
@@ -56,6 +57,7 @@ const MenuItem = styled.div`
 `
 export function SideBar() {
   const [menu, setMenu] = useRecoilState(selectedMenu);
+  const userInfo = useRecoilValue(userInfoAtom)
 
   const clickHandler = (id) => {
     setMenu(id);
@@ -63,7 +65,7 @@ export function SideBar() {
 
   return(
     <Container>
-      <Title >임혜균 고객님</Title>
+      <Title >{userInfo.userName} 고객님</Title>
       {
         menuItems.map((item)=>{
           return <MenuItem key={item.id} onClick={()=>clickHandler(item.id)} color={menu === item.id ? "rgb(71, 127, 239)" : "#e6edf3"}>{item.title}</MenuItem>

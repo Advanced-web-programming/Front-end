@@ -1,4 +1,6 @@
+import { selector } from "recoil";
 import { atom } from "recoil";
+import { ProductApi, getAllPost } from "../api/productApi";
 
 export const orderModalOpen = atom({
   key: "orderModalOpen", 
@@ -31,5 +33,19 @@ export const selectedDrone = atom({
   default: {
     categoryId: 0,
     itemId: 1,
+  }
+})
+
+export const refreshAtom = atom({
+  key: "refreshAtom",
+  default: 1
+})
+
+export const allPost = selector({
+  key: "allPost",
+  get: async({get}) => {
+    const refresh = get(refreshAtom)
+    const allPost = await getAllPost();
+    return allPost.data.productCategorySearchResList;
   }
 })

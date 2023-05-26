@@ -7,6 +7,10 @@ import { useRecoilState, useResetRecoilState } from "recoil";
 import { DroneCard } from "./DroneCard";
 
 import { SpinUI, SuccesMessage } from "../../utils/antdUI";
+import { addOrder } from "../../api/orderApi";
+import { useRecoilValue } from "recoil";
+
+import { authAtom } from "../../atoms/authAtom";
 
 const Container = styled.section`
   z-index: 2;
@@ -118,10 +122,27 @@ function ModalContent(props){
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const [userName, setUserName] = useState("")
+  const [email, setEmail] = useState("")
+  const [object, setObject] = useState("")
+  const [count, setCount] = useState("")
+
+  const [drone, setDrone] = useRecoilState(selectedDrone)
+  const auth = useRecoilValue(authAtom)
+
   const handleClick = (e) => {
     e.stopPropagation();
   };
   const onClickModal = () => {
+    if(!auth){
+      alert("로그인을 하세요")
+      return
+    }
+    if(userName === "" || email === "" || object === "" || count === ""){
+      alert("정보를 입력하세요")
+      return
+    }
+    addOrder(userName, drone.title, drone.type)
     setIsLoading(true);
   }
   
@@ -150,14 +171,14 @@ function ModalContent(props){
                 <Text color={"black"} size={"24px"} weight={"700"} marginTop={"0px"}>함께할 준비가 거의 끝났습니다.</Text>
                 <Text color={"black"} size={"15px"} weight={"500"} marginTop={"0px"}>상담 신청을 완료하면 1주일 이내로 상담 일정을 잡으실 수 있습니다.</Text>
                 <Text color={"black"} size={"18px"} weight={"600"} marginTop={"30px"}>이름</Text>
-                <Input />
+                <Input value={userName} onChange={(e)=>setUserName(e.currentTarget.value)} />
                 <Text color={"black"} size={"18px"} weight={"600"} marginTop={"30px"}>이메일</Text>
-                <Input />
+                <Input value={email} onChange={(e)=>setEmail(e.currentTarget.value)} />
                 <Text color={"black"} size={"18px"} weight={"600"} marginTop={"30px"}>사용 목적</Text>
-                <Input />
+                <Input value={object} onChange={(e)=>setObject(e.currentTarget.value)} />
                 <Text color={"black"} size={"18px"} weight={"600"} marginTop={"30px"}>예상 구매 수량</Text>
-                <Input />
-                <Button onClick={onClickModal}>상담 신청</Button>
+                <Input value={count} onChange={(e)=>setCount(e.currentTarget.value)} />
+                <Button onClick={onClickModal}>구매 하기</Button>
               </Contents>
               <Type>
                   {

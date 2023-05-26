@@ -3,6 +3,8 @@ import {rotate_image,  appear, appear_description } from "../../utils/anmation";
 import { useRecoilState } from "recoil";
 import { selectedCategory, selectedDrone } from "../../atoms/orderAtom";
 
+import { useEffect } from "react"; 
+
 const Drones = styled.div`
   position: relative; 
   display: flex;
@@ -56,22 +58,35 @@ const Img = styled.img`
 export function DroneCard(props) {
   const [drone, setDrone] = useRecoilState(selectedDrone);
   const [category, setCategory] = useRecoilState(selectedCategory);
+
+  useEffect(()=>{
+    setDrone({
+      categoryId: category.id,
+      itemId: 1,
+      title: props.item.title,
+      type: props.item.type
+    })
+  }, [])
+
   const clickSetDrone = () =>{
     setDrone({
       categoryId: category.id,
-      itemId: props.item.id
+      itemId: props.item.id,
+      title: props.item.title,
+      type: props.item.type
     })
   }
+
   return(
     <Drones onClick={clickSetDrone} borderColor={drone.itemId === props.item.id ? "red" : 'black'} boxShodow={drone.itemId === props.item.id ? true : false}>
       <Img src={props.item.image} />
       <Text  color={"black"} size={"16px"} weight={"700"} marginTop={"20px"}>{props.item.title}</Text>
       <Text  color={"#808080"} size={"14px"} weight={"600"} marginTop={"10px"}>{props.item.type}</Text>
       <Description>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>제조사: {props.item.decription.made}</NonHoverText>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>자체중량: {props.item.decription.weight}</NonHoverText>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>최대속도: {props.item.decription.speed}</NonHoverText>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>비행속도: {props.item.decription.time}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>제조사: {props.item.description.made}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>자체중량: {props.item.description.weight}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>최대속도: {props.item.description.speed}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>비행속도: {props.item.description.time}</NonHoverText>
       </Description>
     </Drones>
   )

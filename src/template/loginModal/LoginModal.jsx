@@ -7,6 +7,10 @@ import { userInfoAtom } from '../../atoms/userAtom';
 
 import { Navigate, useNavigate} from "react-router-dom";
 
+import { RegisterModal } from './RegisterModal';
+import { loginApi } from '../../api/userApi';
+import { authAtom } from '../../atoms/authAtom';
+
 const rotate_image = keyframes`
   0% {
     transform: translateY(40px); 
@@ -36,7 +40,7 @@ const Container = styled.div`
 const LoginPage = styled.div`
 	position: absolute;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
 	padding: 64px 55px;
@@ -52,6 +56,7 @@ const LoginPage = styled.div`
 
 
 const LoginText = styled.h2`
+	margin-top: 10px;
 	margin-right: auto;
 	font-weight: 600;
 	font-size: 32px;
@@ -63,13 +68,13 @@ const MessageText = styled.h5`
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 17px;
-	margin-bottom: 10px
+	margin-bottom: 20px
 `
 
 const Form = styled.input`
 	border-radius: 10px;
 	border: none;
-	margin: 10px 0;
+	margin: 5px 0;
 	padding: 0 19px;
 	width: 100%;
 	height: 59px;
@@ -80,37 +85,15 @@ const Form = styled.input`
 
 `
 
-const Forget = styled.span`
-	margin: 10px 0 60px;
-	font-size: 11px;
-	line-height: 13px;
-	color: #b6b6b6;
-	margin-left: auto;
-`
-
 const LoginBtn = styled.button`
 	background: #3a3a3a;
 	border-radius: 10px;
 	border: none;
-	margin: 10px 0 0 0;
+	margin: auto 0 0 0;
 	padding: 0 19px;
 	width: 100%;
 	height: 59px;
 	color: #ffffff;
-	font-size: 14px;
-	line-height: 19px;
-	font-weight: 600;
-`
-
-const LoginGoogle = styled.button`
-	background: #ffffff;
-	border-radius: 10px;
-	border: 3px solid black;
-	margin: 10px 0 0 0;
-	padding: 0 19px;
-	width: 100%;
-	height: 59px;
-	color: #000000;
 	font-size: 14px;
 	line-height: 19px;
 	font-weight: 600;
@@ -128,20 +111,28 @@ export function LoginModal(props) {
 	const { onClose } = props
 	let searchRef = useRef(null)
 
+	const [isOpen, setIsOpen] = useState(false)
 	const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
 	const [id, setId] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
 
-	const clickHandler = () => {
+	const [auth, setAuth] = useRecoilState(authAtom)
+
+
+	const clickHandler = async () => {
+		const response = await loginApi(id, password)
 		//요청
 		setUserInfo({
-			userId: id,
-			password: password
+			id: response.id,
+			userId: response.email,
+			userName: response.name,
+			password: response.password
 		})
+		setAuth(true)
 		onClose(false)
 		navigate("/auth")
-}
+	}
 
 	useEffect(() => {
 		function handleOutside(e) {
@@ -159,14 +150,21 @@ export function LoginModal(props) {
 	return (
 		<Container>
 			<LoginPage ref={searchRef}>
+				{
+					!isOpen ?
+				<>
 					<LoginText>로그인</LoginText>
 					<MessageText>다시 뵙게 되어 반갑습니다!</MessageText>
 					<Form type="email" placeholder="이메일 또는 휴대전화" onChange={(e)=>setId(e.currentTarget.value)} value={id}></Form>
 					<Form type='password' placeholder="비밀번호" onChange={(e)=>setPassword(e.currentTarget.value)} value={password}></Form>
-					<Forget>비밀번호를 잊으셨나요?</Forget>
+					{/* <Forget>비밀번호를 잊으셨나요?</Forget> */}
 					<LoginBtn onClick={clickHandler}>로그인 하기</LoginBtn>
-					<LoginGoogle>다른 방식으로 로그인</LoginGoogle>
-					<Register>계정이 없으신가요? 회원 가입하기</Register>
+					{/* <LoginGoogle>다른 방식으로 로그인</LoginGoogle> */}
+					<Register onClick={()=>setIsOpen(true)}>계정이 없으신가요? 회원 가입하기</Register>
+				</>
+				:
+				<RegisterModal setIsOpen={setIsOpen}/>
+				}
 			</LoginPage>
 		</Container>
 	)
