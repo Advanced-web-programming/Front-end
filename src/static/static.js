@@ -305,10 +305,6 @@ export const menuItems = [
   },
   {
     id: 1,
-    title: "Order List",
-  },
-  {
-    id: 2,
     title: "Delivery List",
   }
 ]

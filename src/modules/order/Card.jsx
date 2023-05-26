@@ -5,6 +5,12 @@ import DroneAcademy from "../../assets/project/DroneAcademy.png";
 import DroneFarm from "../../assets/project/DroneFarm.png"
 import DroneShow from "../../assets/project/DroneShow.png"
 
+import Drone1 from "../../assets/order/Drone1.png"
+import Drone2 from "../../assets/order/Drone2.png"
+import Drone3 from "../../assets/order/Drone3.png"
+import Drone4 from "../../assets/order/Drone4.png"
+import Drone5 from "../../assets/order/Drone5.png"
+
 import { useScroll } from "../../utils/useScroll";
 import { orderModalOpen, selectedCategory } from "../../atoms/orderAtom";
 import { useRecoilState } from "recoil";
@@ -84,10 +90,11 @@ export function Card(props) {
   const [isOpen, setIsOpen] = useRecoilState(orderModalOpen);
   const [category, setCategory] = useRecoilState(selectedCategory);
   const imgRender = (num) =>{
-    if(num === 1) return DroneShow
-    else if(num === 2) return DroneAcademy
-    else if(num === 3) return DroneFarm
-    else if(num === 4) return DominoDrone
+    if(num === 1) return Drone1
+    else if(num === 2) return Drone2
+    else if(num === 3) return Drone3
+    else if(num === 4) return Drone4
+    else if(num === 5) return Drone5
   }
 
   const onClickModal = () => {

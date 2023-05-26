@@ -78,10 +78,10 @@ export function DroneCard(props) {
       <Text  color={"#e6edf3"} size={"16px"} weight={"700"} marginTop={"20px"}>{props.item.title}</Text>
       <Text  color={"#808080"} size={"14px"} weight={"600"} marginTop={"10px"}>{props.item.type}</Text>
       <Description>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>제조사: {props.item.decription.made}</NonHoverText>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>자체중량: {props.item.decription.weight}</NonHoverText>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>최대속도: {props.item.decription.speed}</NonHoverText>
-        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>비행속도: {props.item.decription.time}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>제조사: {props.item.description.made}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>자체중량: {props.item.description.weight}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>최대속도: {props.item.description.speed}</NonHoverText>
+        <NonHoverText color={'black'} size={"16px"} weight={"500"} marginTop={"5px"}>비행속도: {props.item.description.time}</NonHoverText>
       </Description>
     </Drones>
   )

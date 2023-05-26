@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { orderBasicInfo } from "../../static/static";
+import { allPost } from "../../atoms/orderAtom";
 
 const Container = styled.div`
   width: 100%;
@@ -47,7 +48,7 @@ const Button = styled.button`
 `
 
 
-export function Item() {
+export function Item(props) {
 
   return(
     <ItemFrame>
@@ -60,19 +61,20 @@ export function Item() {
 
 
 export function OrderContents() {
+  // const orderBasicInfo = useRecoilValue(allPost);
 
   return(
     <Container>
       {
-        orderBasicInfo.map((item)=>{
+        orderBasicInfo.map((items)=>{
           return (
             <>
-              <Title key={item.id} borderRadious={item.id-1 === 0 ? true : false }>{item.title}</Title>
-              <Item></Item>
-              <Item></Item>
-              <Item></Item>
-              <Item></Item>
-              <Item></Item>
+              <Title key={items.id} borderRadious={items.id-1 === 0 ? true : false }>{items.title}</Title>
+              {
+                items.map((item)=>{
+                  return <Item item={item}/>
+                })
+              }
             </>
           )
         })

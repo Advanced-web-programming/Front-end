@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { selectedUserAtom, userOrderListAtom } from "../../atoms/userAtom";
+import { getUserDeliveryList } from "../../atoms/userAtom";
 import { useRecoilState } from "recoil";
 import { useResetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
+import { approveDeliveryApi } from "../../api/deliveryApi";
 
 const Container = styled.div`
   width: 100%;
@@ -21,7 +23,7 @@ const Title = styled.div`
   font-size: ${props=>props.size};
   font-weight: 600;
   padding-left: 5px;
-  margin-top: 10px;
+  margin: 10px 0 0 45px;
 `
 
 const InputFrame = styled.div`
@@ -30,7 +32,7 @@ const InputFrame = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap 20px;
-  margin: 5px 0 50px 0;
+  margin: 5px 0 50px 50px;
 `
 
 const Input = styled.input`
@@ -77,36 +79,31 @@ const State = styled.button`
 `
 
 function UserOrderItem(props) {
-  const [items, setItems] = useRecoilState(userOrderListAtom);
+  const [isVisible, setIsVisible] = useState(false)
   const updateState = (idx) => {
-    setItems((prevOrderList)=>{
-      const updatedOrderList = [...prevOrderList];
-      updatedOrderList[idx-1] = {
-        ...updatedOrderList[idx-1],
-        state: '배송준비',
-      };
-      return updatedOrderList;
-    });
+    if (!isVisible && props.state === "승인대기")
+      approveDeliveryApi(idx)
+    setIsVisible(true)
   };
   return(
-    <OrderItem>
-      <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.orderNumber}</Text>
-      <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.userName}</Text>
-      <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.date}</Text>
-      <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.title}</Text>
-      <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.type}</Text>
-      <State onClick={()=>updateState(props.id)} color={props.id === 0 ? false : (props.state === "완료"? "rgb(67, 132, 64)" : "#CFC036")} size={"0.8rem"} weight={"600"}>{props.state}</State>
-    </OrderItem>
+        <OrderItem>
+          <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.orderNumber}</Text>
+          <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.userName}</Text>
+          <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.date}</Text>
+          <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.title}</Text>
+          <Text color={"white"} size={"0.8rem"} weight={"600"} border={true}>{props.type}</Text>
+          <State onClick={()=>updateState(props.id)} color={props.id === 0 ? false : (props.state === "완료"? "rgb(67, 132, 64)" : ((props.state === "배송준비" || isVisible) ? "#CFC036" : "#ED0000"))} size={"0.8rem"} weight={"600"}>{(props.state === "승인대기" && isVisible) ? "배송준비" : props.state}</State>
+        </OrderItem>
   )
 }
 
 export function OrderManage() {
   const [user, setUser] = useState();
-  const [userName, setUserName ] = useRecoilState(selectedUserAtom);
-  const [items, setItems] = useRecoilState(userOrderListAtom);
+  const [selectedUser, setSelectedUser] = useState("")
+  const userNameDeliveryList = useRecoilValue(getUserDeliveryList(selectedUser));
 
   const searchHandler = () => {
-    setUserName(user);
+    setSelectedUser(user)
   }
 
   return(
@@ -115,13 +112,13 @@ export function OrderManage() {
       <InputFrame>
         <Input placeholder={"User Name"} value={user} onChange={(e)=>setUser(e.currentTarget.value)}/>
         <Button color={"rgb(67, 132, 64)"} onClick={searchHandler}>Search</Button>
-        <Button color={"rgb(71, 127, 239)"} onClick={searchHandler}>Update</Button>
       </InputFrame>
       <UserOrderItem id={0} orderNumber={"주문번호"} userName={"고객"} date={"날짜"} title={"구분"} type={"종류"} state={"State"}/>
       {
-        items.map((item)=>{
-          return <UserOrderItem key={item.id} id={item.id} orderNumber={item.orderNumber} userName={item.userName} date={item.date} title={item.title} type={item.type} state={item.state}/>
-        })
+        userNameDeliveryList !== undefined && 
+        userNameDeliveryList.map(((item)=>{
+          return <UserOrderItem key={item.id} id={item.id} orderNumber={item.orderNumber} userName={item.userName} date={item.date.slice(0, 10)} title={item.title} type={item.type} state={item.state}/>
+        }))
       }
     </Container>
   )

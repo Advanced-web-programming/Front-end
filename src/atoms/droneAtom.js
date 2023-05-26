@@ -14,8 +14,8 @@ export const titleAtom = atom({
   default: ""
 })
 
-export const typeyAtom = atom({
-  key: "typeyAtom",
+export const typeAtom = atom({
+  key: "typyAtom",
   default: ""
 })
 
@@ -44,23 +44,23 @@ export const selectedCategoryList = atom({
   default: [
     {
       categoryId: 0,
-      itemId: 0
+      itemId: -1
     },
     {
       categoryId: 0,
-      itemId: 0
+      itemId: -1
     },
     {
       categoryId: 0,
-      itemId: 0
+      itemId: -1
     },
     {
       categoryId: 0,
-      itemId: 0
+      itemId: -1
     },
     {
       categoryId: 0,
-      itemId: 0
+      itemId: -1
     },
   ]
 })

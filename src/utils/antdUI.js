@@ -41,6 +41,26 @@ const antIcon = (
 export const SpinUI = () => <Spin indicator={antIcon} />;
 
 
+const antIcon1 = (
+  <LoadingOutlined
+    style={{
+      fontSize: 100,
+      color: 'green',
+      // textAlign: 'center',
+    }}
+    spin
+  />
+);
+export const SusepenseSpinUI = () => <Spin 
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '800px'
+    }}
+    indicator={antIcon1} />;
+
+
 export const SuccesMessage = (props) => (
   <Result
     status="success"
@@ -60,7 +80,7 @@ const UploadFrame = styled.div`
 `
 const Label = styled.label`
   display: inline-block;
-  padding: 1rem;
+  padding: 2.5rem 1rem;
   color: white;
   background-color: transparents;
   cursor: pointer;
@@ -116,11 +136,10 @@ export const UploadImg = ({setFile}) => {
   const onChangeImg = (e) => {
     e.preventDefault();
     const formData = new FormData();
-      const uploadFile = e.target.files[0];
-      formData.append('file', uploadFile);
-      setFile(uploadFile); 
-      handlePreview(uploadFile);
-    
+    const uploadFile = e.target.files[0];
+    formData.append('file', uploadFile);
+    setFile(uploadFile); 
+    handlePreview(uploadFile);
   };
   return (
     <>
@@ -137,7 +156,9 @@ export const UploadImg = ({setFile}) => {
                 Upload
               </div>
             </Label>
-            <Input type="file" id="file-input" ref={fileInputRef} onChange={onChangeImg}/>
+            <Input type="file"
+            // accept='image/jpg,impge/png,image/jpeg,image/gif' 
+            name="file" id="file-input" multiple ref={fileInputRef} onChange={onChangeImg}/>
           </>
           :
           <img
@@ -224,3 +245,4 @@ export const DropdownButton = () => {
   </Dropdown>
   )
 };
+

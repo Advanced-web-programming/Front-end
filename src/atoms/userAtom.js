@@ -1,9 +1,12 @@
 import { atom, selector } from "recoil";
 import { Navigate, useNavigate} from "react-router-dom";
+import { getDeliveryApi, getUserDeliveryApi } from "../api/deliveryApi";
+import { selectorFamily } from "recoil";
 
 export const userInfoAtom = atom({
   key: "userInfoAtom", 
   default: {
+    id: "",
     userId: "",
     userName: "",
     password: ""
@@ -37,4 +40,21 @@ export const userOrderListAtom = atom({
       state: "완료"
     }
   ]
+})
+
+export const getAllDeliveryList = selector({
+  key: "getAllDeliveryList",
+  get: async({get})=>{
+    const response = await getDeliveryApi();
+    return response;
+  }
+})
+
+
+export const getUserDeliveryList = selectorFamily({
+  key: "getUserDeliveryList",
+  get: (nm) => async({get})=>{
+    const response = await getUserDeliveryApi(nm)
+    return response
+  }
 })

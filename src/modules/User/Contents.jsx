@@ -37,8 +37,7 @@ export function Contents() {
     <Container>
       <Title>{ menuItems[menu].title }</Title>
       { menu === 0 && <ProfileContents /> }
-      { menu === 1 && <OrderContents /> }
-      { menu === 2 && <DeliveryContents />}
+      { menu === 1 && <DeliveryContents />}
     </Container>
   )
 }

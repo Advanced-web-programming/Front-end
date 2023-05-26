@@ -73,7 +73,6 @@ export function Nav() {
   const pathHandler = (p) =>{
     setPath(p)
   }
-  console.log(window.location.pathname, path)
 
   return (
     <Container>

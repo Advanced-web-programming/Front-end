@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { selectedUserAtom, userOrderListAtom } from "../../atoms/userAtom";
-import { useRecoilState } from "recoil";
+import { selectedUserAtom, userOrderListAtom, getUserDeliveryList } from "../../atoms/userAtom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { completeDeliveryApi } from "../../api/deliveryApi";
 
 const Container = styled.div`
   width: 100%;
@@ -118,7 +119,7 @@ function UserOrderItem(props) {
       <Text color={"white"} size={"0.8rem"} weight={"600"}>{props.date}</Text>
       <Text color={"white"} size={"0.8rem"} weight={"600"}>{props.title}</Text>
       <Text color={"white"} size={"0.8rem"} weight={"600"}>{props.type}</Text>
-      <State onClick={()=>props.handleOrder(props.userName, props.date)} color={"white"} size={"0.8rem"} weight={"600"}>{"Select"}</State>
+      <State onClick={()=>props.handleOrder(props.id, props.userName, props.date)} color={"white"} size={"0.8rem"} weight={"600"}>{"Select"}</State>
     </OrderItem>
   )
 }
@@ -128,6 +129,7 @@ export function DeliveryManage() {
   const [deliveryNumber, setDeliveryNumber] = useState("");
   const [deliveryCompany, setDeliveryCompany] = useState("");
   const [selectedOrder, setSelectedOrder] = useState({
+    userId: "",
     userName: "",
     date: "",
     deliveryNumber: "",
@@ -136,16 +138,24 @@ export function DeliveryManage() {
   });
 
   const [userName, setUserName ] = useRecoilState(selectedUserAtom);
-  const [items, setItems] = useRecoilState(userOrderListAtom);
-
+  const userNameDeliveryList = useRecoilValue(getUserDeliveryList(userName));
   const searchHandler = () => {
     setUserName(user);
   }
 
-  const handleOrder = (userName, date) => {
+  const clickSendDeliveryAPI = () => {
+    if(selectedOrder.id === "" || selectedOrder.deliveryNumber === "" || selectedOrder.deliveryCompany === ""){
+      alert("정보를 입력해주세요")
+      return
+    }
+    completeDeliveryApi(selectedOrder.userId, selectedOrder.deliveryNumber, selectedOrder.deliveryCompany)
+  }
+
+  const handleOrder = (id, userName, date) => {
     setSelectedOrder((prevJSON) => {
       const updatedJSON = { 
         ...prevJSON,
+        userId: id,
         userName: userName,
         date: date
        };
@@ -176,8 +186,12 @@ export function DeliveryManage() {
       </InputFrame>
       <OrderListFrame>
         {
-          items.map((item)=>{
-            return <UserOrderItem handleOrder={handleOrder} key={item.id} id={item.id} orderNumber={item.orderNumber} userName={item.userName} date={item.date} title={item.title} type={item.type} state={item.state}/>
+          userNameDeliveryList.map((item)=>{
+            return (
+              item.state === "배송준비" ?
+              <UserOrderItem handleOrder={handleOrder} key={item.id} id={item.id} orderNumber={item.orderNumber} userName={item.userName} date={item.date.slice(0, 10)} title={item.title} type={item.type} state={item.state}/>
+              : <></>
+            )
           })
         }
       </OrderListFrame>
@@ -194,7 +208,7 @@ export function DeliveryManage() {
       <InputFrame>
         <Title size={"1.25rem"}>배송 확정</Title>
         <DeliveryItemFrame deliveryNumber={selectedOrder.deliveryNumber} deliveryCompany={selectedOrder.deliveryCompany} userName={selectedOrder.userName} date={selectedOrder.date} />
-        <Button color={"rgb(67, 132, 64)"} onClick={searchHandler}>등록하기</Button>
+        <Button color={"rgb(67, 132, 64)"} onClick={clickSendDeliveryAPI}>등록하기</Button>
       </InputFrame>
     </Container>
   )

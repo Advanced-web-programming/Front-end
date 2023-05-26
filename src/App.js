@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,6 +12,8 @@ import { ProtectedRoute, PrivateRoute } from "./utils/protectedRoute";
 
 import { useRecoilValue } from "recoil";
 import { authSelector } from "./atoms/authAtom";
+
+import { SusepenseSpinUI } from "./utils/antdUI";
 
 const NavPosition = styled.div`
   position: absolute;
@@ -30,23 +32,24 @@ function App() {
   return (
     <div>
       <BrowserRouter basename={"/Front-end"}>
-      {/* <BrowserRouter > */}
-        {isAuth ?<></> : <NavPosition><Nav /></NavPosition>}
-        <Routes>
-          <Route path="/" exact={true} element={
-              <Main />
-          } />
-          <Route path='/user' element={
-            <ProtectedRoute>
-              <UserTemplate/>
-            </ProtectedRoute>
-          } />
-          <Route path='/auth' element={
-            <PrivateRoute>
-              <AuthTemplate/>
-            </PrivateRoute>
-          } />
-        </Routes>
+        <Suspense fallback={<SusepenseSpinUI />}>
+          {isAuth ?<></> : <NavPosition><Nav /></NavPosition>}
+          <Routes>
+            <Route path="/" exact={true} element={
+                <Main />
+            } />
+            <Route path='/user' element={
+              <ProtectedRoute>
+                <UserTemplate/>
+              </ProtectedRoute>
+            } />
+            <Route path='/auth' element={
+              <PrivateRoute>
+                <AuthTemplate/>
+              </PrivateRoute>
+            } />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
       {isAuth ?<></> : <FooterPosition> <Footer /></FooterPosition>}
     </div>

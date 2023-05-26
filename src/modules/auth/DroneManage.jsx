@@ -3,13 +3,17 @@ import styled from "styled-components";
 
 import { selectedUserAtom, userOrderListAtom } from "../../atoms/userAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { categoryAtom, titleAtom, typeyAtom,madeAtom,weightAtom, speedAtom, timeAtom } from "../../atoms/droneAtom";
+import { categoryAtom, titleAtom, typeAtom,madeAtom,weightAtom, speedAtom, timeAtom } from "../../atoms/droneAtom";
 
 import { DropdownButton, UploadImg } from "../../utils/antdUI";
 
 import { categoryList, orderBasicInfo } from "../../static/static";
+import { allPost, refreshAtom } from "../../atoms/orderAtom";
 
 import { DroneCard } from "./DroneCard";
+
+import { deleteProduct, createProduct } from "../../api/productApi";
+import { selectedCategoryList } from "../../atoms/droneAtom";
 
 const Container = styled.div`
   width: 100%;
@@ -97,31 +101,56 @@ const TitleFrame = styled.div`
   align-items: center;
 `
 
+const InputButton= styled.input`
+font-size: 0.8rem;
+background-color: ${props=>props.color};
+border-radius: 5px;
+padding: 6px 16px;
+color: white;
+font-weight: 500;
+margin-left: auto;
+`
+
 export function DroneManage() {
+
+  const orderBasicInfo = useRecoilValue(allPost);
+
   const [file,setFile] = useState("")
   const [user, setUser] = useState();
   const [userName, setUserName ] = useRecoilState(selectedUserAtom);
   const category = useRecoilValue(categoryAtom);
   const [title, setTitle] = useRecoilState(titleAtom);
-  const [type, setType] = useRecoilState(typeyAtom);
+  const [type, setType] = useRecoilState(typeAtom);
   const [made, setMade] = useRecoilState(madeAtom);
   const [weight, setWeight] = useRecoilState(weightAtom);
   const [speed, setSpeed] = useRecoilState(speedAtom);
   const [time, setTime] = useRecoilState(timeAtom);
 
-  const searchHandler = () => {
-    setUserName(user);
+  const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryList)
+
+  const [refresh, setRefresh] = useRecoilState(refreshAtom)
+
+  const createProductApi = () => {
+    createProduct(parseInt(category.key), title, type,made,weight, speed,  time,  file);
+  }
+
+  const deleteProductApi = (id) => {
+    if (selectedCategory[id-1].itemId === -1)
+      return
+    deleteProduct(selectedCategory[id-1].itemId)
+    setRefresh((prev)=>{return prev + 1})
   }
 
   return(
     <Container>
       {
+        orderBasicInfo !== undefined &&
         orderBasicInfo.map((category)=>{
           return(
           <>
             <TitleFrame>
               <Title size={"1.25rem"} marginTop={true}>{category.title}</Title>
-              <Button color={"rgb(200, 70, 60)"}>삭제</Button>
+              <Button color={"rgb(200, 70, 60)"} onClick={()=>deleteProductApi(category.id)} >삭제</Button>
             </TitleFrame>
             <ItemFrame>
               {
@@ -134,23 +163,24 @@ export function DroneManage() {
         })
       }
       <InputFrame>
+        <>
               <ImgListFrame>
                   <UploadImg setFile={setFile}/>
                   <InputFrame>
                     <CategoryFrame>
                       <Title size={"1.1rem"}>{category.label}</Title>
                       <DropdownButton />
-                      
                     </CategoryFrame>
                     <Input placeholder={"기종"} value={title} onChange={(e)=>setTitle(e.currentTarget.value)} width={"400px"}/>
                     <Input placeholder={"종류"} value={type} onChange={(e)=>setType(e.currentTarget.value)} width={"400px"}/>
                     <Input placeholder={"제조사"} value={made} onChange={(e)=>setMade(e.currentTarget.value)} width={"400px"}/>
                     <Input placeholder={"자체 중량"} value={weight} onChange={(e)=>setWeight(e.currentTarget.value)} width={"400px"}/>
                     <Input placeholder={"최대 속도"} value={speed} onChange={(e)=>setSpeed(e.currentTarget.value)} width={"400px"}/>
-                    <Input placeholder={"비행 속도"} value={time} onChange={(e)=>setTime(e.currentTarget.value)} width={"400px"}/>
-                    <Button color={"rgb(67, 132, 64)"} onClick={searchHandler}>Add</Button>
+                    <Input placeholder={"비행 시간"} value={time} onChange={(e)=>setTime(e.currentTarget.value)} width={"400px"}/>
+                    <Button color={"rgb(67, 132, 64)"} onClick={createProductApi}> Add</Button>
                   </InputFrame>
               </ImgListFrame>
+              </>
       </InputFrame>
     </Container>
   )
